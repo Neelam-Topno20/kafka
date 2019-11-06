@@ -1,0 +1,25 @@
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Hello-Kafka
+
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Hello-Kafka --from-beginning
+
+javac -cp “/home/neelamtopno/Softwares/kafka_2.12-2.3.1/libs/*” *.java
+
+java -cp “~/Softwares/kafka_2.12-2.3.1/libs/*”:. SimpleProducer Hello-Kafka
+
+git config --global user.email "neilgp6555@gmail.com"
+
+git config --global user.name "Neelam-Topno20"
+
+git remote add origin https://github.com/Neelam-Topno20/kafka.git
+
+git remote -v
+
+git push origin master
+
+
