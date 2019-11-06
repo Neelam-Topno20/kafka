@@ -22,4 +22,14 @@ git remote -v
 
 git push origin master
 
+git diff HEAD
+
+git status
+
+git add .
+
+git diff --cached
+
+git commit -m "added help file"
+
 
