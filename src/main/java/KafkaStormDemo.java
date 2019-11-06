@@ -7,12 +7,12 @@ import org.apache.storm.topology.TopologyBuilder;
 import java.util.UUID;
 
 public class KafkaStormDemo {
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) throws Exception {
         Config config = new Config();
         config.setDebug(true);
         config.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
         String zkConnString = "localhost:2181";
-        String topic = "my-first-topic";
+        String topic = "Hello-Kafka";
         BrokerHosts hosts = new ZkHosts(zkConnString);
 
         SpoutConfig kafkaSpoutConfig = new SpoutConfig (hosts, topic, "/" + topic,
