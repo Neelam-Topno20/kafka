@@ -1,16 +1,15 @@
 //import util.properties packages
+
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
 //import simple producer packages
 //import org.apache.kafka.clients.producer.Producer;
-
 //import KafkaProducer packages
-import org.apache.kafka.clients.producer.KafkaProducer;
-
 //import ProducerRecord packages
-import org.apache.kafka.clients.producer.ProducerRecord;
 
 //Create java class named “SimpleProducer”
 public class SimpleProducer {
@@ -25,7 +24,7 @@ public class SimpleProducer {
 */
         //Assign topicName to string variable
         //String topicName = args[0].toString();
-        String topicName = "Hello-Kafka";
+        String topicName = "my-last-word";
         // create instance for properties to access producer configs
         Properties props = new Properties();
 

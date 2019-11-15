@@ -1,8 +1,9 @@
-import java.util.Properties;
-import java.util.Arrays;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+import java.util.Arrays;
+import java.util.Properties;
 
 public class SimpleConsumer {
     public static void main(String[] args) throws Exception {
@@ -11,7 +12,7 @@ public class SimpleConsumer {
             return;
         }*/
         //Kafka consumer configuration settings
-        String topicName = "Hello-Kafka";
+        String topicName = "my-last-topic";
         Properties props = new Properties();
 
         props.put("bootstrap.servers", "localhost:9092");

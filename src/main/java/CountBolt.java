@@ -2,6 +2,7 @@ import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 
 import java.util.HashMap;
@@ -19,8 +20,8 @@ public class CountBolt implements IRichBolt {
 
     @Override
     public void execute(Tuple input) {
-        String str = input.getString(0);
-
+       // String str = input.getString(0);
+    String str=input.getStringByField("value");
         if(!counters.containsKey(str)){
             counters.put(str, 1);
         }else {
@@ -28,18 +29,21 @@ public class CountBolt implements IRichBolt {
             counters.put(str, c);
         }
 
+        for(Map.Entry<String, Integer> entry:counters.entrySet()){
+            System.out.println(entry.getKey()+" : " + entry.getValue());
+        }
+
         collector.ack(input);
     }
 
     @Override
     public void cleanup() {
-        for(Map.Entry<String, Integer> entry:counters.entrySet()){
-            System.out.println(entry.getKey()+" : " + entry.getValue());
-        }
+
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
+        declarer.declare(new Fields("value"));
 
     }
 
