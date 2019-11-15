@@ -11,9 +11,9 @@ public class KafkaStormDemo {
             Config config = new Config();
             config.setDebug(true);
             config.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
-            String zkConnString = "localhost:9092";
+            String kafkaBroker = "localhost:9092";
             String topic = "my-last-topic";
-            KafkaSpoutConfig spoutConfig = KafkaSpoutConfig.builder(zkConnString,topic)
+            KafkaSpoutConfig spoutConfig = KafkaSpoutConfig.builder(kafkaBroker,topic)
                     .setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout")
                     .build();
             System.out.println("0");

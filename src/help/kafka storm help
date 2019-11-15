@@ -34,4 +34,22 @@ git diff --cached
 
 git commit -m "added help file"
 
+----------------------------------
 
+sudo systemctl enable cassandra
+sudo systemctl enable cassandra
+
+CREATE KEYSPACE talentica WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+use talentica;
+CREATE TABLE emp(
+   emp_id int PRIMARY KEY,
+   emp_name text,
+   emp_city text,
+   emp_sal varint,
+   emp_phone varint
+   );
+
+select * from emp;
+
+INSERT INTO emp (emp_id, emp_name, emp_city,
+   emp_phone, emp_sal) VALUES(1,'Neelam', 'Pune', 9123100545, 5000000);
