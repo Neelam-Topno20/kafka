@@ -28,7 +28,10 @@ git diff HEAD
 
 git status
 
-git add .
+git add -A stages all changes
+git add . stages new files and modifications, without deletions
+
+git add -u stages modifications and deletions, without new files
 
 git diff --cached
 
@@ -53,3 +56,11 @@ select * from emp;
 
 INSERT INTO emp (emp_id, emp_name, emp_city,
    emp_phone, emp_sal) VALUES(1,'Neelam', 'Pune', 9123100545, 5000000);
+
+CREATE TABLE wordcount(
+   word_id int PRIMARY KEY,
+   word text ,
+   count int
+   );
+
+INSERT INTO wordcount(word_id,word,count) VALUES();

@@ -1,4 +1,4 @@
-import com.datastax.oss.driver.api.core.CqlSession;
+//import com.datastax.oss.driver.api.core.CqlSession;
 
 public class CassandraConnector {
 
@@ -13,13 +13,13 @@ public class CassandraConnector {
                     + "emp_phone varint );";
             String dataInsertQuery= "INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone,  emp_sal)"
                     + " VALUES(1,'Neelam', 'Pune', 9848022338, 5000000);" ;
-
+/*
             //creating Cluster object
             CqlSession session = CqlSession.builder().build();
-         /*   Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
+         *//*   Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
 
             //Creating Session object
-            Session session = cluster.connect();*/
+            Session session = cluster.connect();*//*
 
             //using the KeySpace
             session.execute("USE capgemini");
@@ -27,7 +27,7 @@ public class CassandraConnector {
             //Executing the query
             session.execute(createKeyspaceQuery);
             session.execute(createTableQuery);
-            session.execute(dataInsertQuery);
+            session.execute(dataInsertQuery);*/
 
         }
     }
