@@ -12,6 +12,7 @@ import java.util.Map;
 public class CountBolt implements IRichBolt {
 
     Map<String,Integer> counters;
+    static int i=0;
     OutputCollector collector;
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
@@ -29,23 +30,18 @@ public class CountBolt implements IRichBolt {
             Integer c = counters.get(str) +1;
             counters.put(str, c);
         }
-
-        for(Map.Entry<String, Integer> entry:counters.entrySet()){
-            System.out.println(entry.getKey()+" : " + entry.getValue());
-            collector.emit(new Values(entry.getKey(),entry.getValue()));
-        }
-
+        System.out.println(i+" "+ " "+str+" "+counters.get(str));
+        collector.emit(new Values(i++,str,counters.get(str)));
         collector.ack(input);
     }
 
     @Override
     public void cleanup() {
-
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("word","count"));
+        declarer.declare(new Fields("counter","word","count"));
 
     }
 

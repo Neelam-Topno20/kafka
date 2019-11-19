@@ -25,7 +25,6 @@ public class KafkaStormDemo {
             KafkaSpoutConfig spoutConfig = KafkaSpoutConfig.builder(kafkaBroker,topic)
                     .setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafka_spout")
                     .build();
-            System.out.println("0");
 
             TopologyBuilder builder = new TopologyBuilder();
         builder.setSpout("KafkaSpout", new KafkaSpout<>(spoutConfig), 1);
@@ -35,15 +34,15 @@ public class KafkaStormDemo {
         builder.setBolt("CountBolt", new CountBolt()).shuffleGrouping("SpiltBolt");
         builder.setBolt("CassandraBolt", new CassandraWriterBolt(
                 async(
+
                         simpleQuery(
-                                "INSERT INTO wordcount(word_id,word,count) VALUES("+ i++ +",?,?);")
+                                "INSERT INTO wordcount(word_id,word,count) VALUES(?,?,?);"
+                        )
                         .with(
-                                fields("word","count")
+                                fields("counter","word","count")
                         )
                 )
         ),1).globalGrouping("CountBolt");
-
-
 
           /*  TopologyBuilder builder = new TopologyBuilder();
             Config conf = new Config();
@@ -75,10 +74,11 @@ public class KafkaStormDemo {
             LocalCluster cluster = new LocalCluster();
             try {
                 cluster.submitTopology("KafkaStormSample", config, builder.createTopology());
-                Thread.sleep(1000);
+                //Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
+
             }
     }}
 
